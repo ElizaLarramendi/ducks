@@ -1,0 +1,64 @@
+---
+title: "Map"
+---
+
+```{r}
+#| message: false
+library(tidyverse)
+library(sf)
+library(rnaturalearth)
+```
+
+```{r}
+#| cache: true
+#| message: false
+mallards <- read_csv("data/mallards.csv") |>
+  mutate(
+    timestamp = lubridate::ymd_hms(timestamp),
+    month_num = lubridate::month(timestamp),
+    month = lubridate::month(timestamp, label = TRUE, abbr = FALSE),
+    year = lubridate::year(timestamp),
+    season = case_when(
+      month_num %in% 3:5 ~ "Spring",
+      month_num %in% 6:8 ~ "Summer",
+      month_num %in% 9:11 ~ "Autumn",
+      month_num %in% c(12, 1, 2) ~ "Winter"
+    ),
+    season = factor(season, levels = c("Spring", "Summer", "Autumn", "Winter"))
+  )
+
+saveRDS(mallards, "data/mallards.rds")
+```
+
+```{r}
+mallards |>
+  summarise(
+    min_lat = min(lat, na.rm = TRUE),
+    max_lat = max(lat, na.rm = TRUE),
+    min_long = min(long, na.rm = TRUE),
+    max_long = max(long, na.rm = TRUE)
+  )
+```
+
+```{r}
+ducks_region <- mallards |>
+  filter(between(lat, 47, 55), between(long, 8, 25))
+
+countries <- ne_countries(scale = "medium", returnclass = "sf")
+
+ggplot() +
+  geom_sf(data = countries, fill = "grey95", color = "grey70") +
+  geom_point(
+    data = ducks_region,
+    aes(x = long, y = lat, color = duck_id),
+    alpha = 0.4,
+    size = 0.7
+  ) +
+  coord_sf(xlim = c(8, 25), ylim = c(47, 55), expand = FALSE) +
+  guides(color = "none") +
+  labs(
+    x = "Longitude",
+    y = "Latitude"
+  ) +
+  theme_minimal()
+```
