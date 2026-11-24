@@ -2,4 +2,6 @@
 title: "Mallard Duck Movement"
 ---
 
-This is the home page of the Mallard Duck Movement website.
+This project explores the movement patterns of wild mallards (*Anas platyrhynchos*) tracked with high-resolution GPS tags deployed around **Lake Constance** (the Bodensee)—a major freshwater lake situated where Germany, Switzerland, and Austria meet. Sourced from the Movebank animal tracking repository, the data reveals that while ducks remain largely clustered around the shoreline habitats of Lake Constance, several individuals undertake longer flights across Central and Eastern Europe (latitudes 47–55°N and longitudes 8–25°E).
+
+Movement and tracking activity vary across the calendar year, peaking sharply in late summer and autumn (August through October) during post-breeding dispersal and seasonal transitions. Explore the spatial distribution of individual birds on the [**Map**](map.qmd) page, or view monthly flight speed distributions on the [**Seasons**](seasons.qmd) page.
