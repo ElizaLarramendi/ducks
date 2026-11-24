@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mallard Duck Movement",
+    "section": "",
+    "text": "This project explores the movement patterns of wild mallards (Anas platyrhynchos) tracked with high-resolution GPS tags deployed around Lake Constance (the Bodensee)—a major freshwater lake situated where Germany, Switzerland, and Austria meet. Sourced from the Movebank animal tracking repository, the data reveals that while ducks remain largely clustered around the shoreline habitats of Lake Constance, several individuals undertake longer flights across Central and Eastern Europe (latitudes 47–55°N and longitudes 8–25°E).\nMovement and tracking activity vary across the calendar year, peaking sharply in late summer and autumn (August through October) during post-breeding dispersal and seasonal transitions. Explore the spatial distribution of individual birds on the Map page, or view monthly flight speed distributions on the Seasons page."
+  },
+  {
+    "objectID": "map.html",
+    "href": "map.html",
+    "title": "Map",
+    "section": "",
+    "text": "# A tibble: 1 × 4\n  min_lat max_lat min_long max_long\n    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1    47.3    53.9     7.83     23.6\n\n\n\n\n\n\n\n\n\n\n\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs \n 0.0000  0.1000  0.2200  0.4005  0.4400 26.6200    2312 \n\n\n\n\nPicking joint bandwidth of 0.0381"
+  },
+  {
+    "objectID": "seasons.html",
+    "href": "seasons.html",
+    "title": "Seasons",
+    "section": "",
+    "text": "# A tibble: 12 × 2\n   month         n\n   &lt;ord&gt;     &lt;int&gt;\n 1 January    3264\n 2 February   4960\n 3 March      7523\n 4 April      6369\n 5 May        3423\n 6 June       2842\n 7 July       5744\n 8 August     9654\n 9 September 20968\n10 October    9889\n11 November   4825\n12 December   3796\n\n\n\n\nPicking joint bandwidth of 0.0381"
+  }
+]
