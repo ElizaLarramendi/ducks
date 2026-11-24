@@ -7,6 +7,7 @@ title: "Map"
 library(tidyverse)
 library(sf)
 library(rnaturalearth)
+library(ggridges)
 ```
 
 ```{r}
@@ -25,7 +26,8 @@ mallards <- read_csv("data/mallards.csv") |>
       month_num %in% c(12, 1, 2) ~ "Winter"
     ),
     season = factor(season, levels = c("Spring", "Summer", "Autumn", "Winter"))
-  )
+  ) |>
+  filter(is.na(speed) | speed <= 30)
 
 saveRDS(mallards, "data/mallards.rds")
 ```
@@ -59,6 +61,22 @@ ggplot() +
   labs(
     x = "Longitude",
     y = "Latitude"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+summary(mallards$speed)
+```
+
+```{r}
+mallards |>
+  filter(!is.na(speed)) |>
+  ggplot(aes(x = speed, y = month, fill = month)) +
+  geom_density_ridges(alpha = 0.7, scale = 1.2, show.legend = FALSE) +
+  labs(
+    x = "Speed (m/s)",
+    y = "Month"
   ) +
   theme_minimal()
 ```
